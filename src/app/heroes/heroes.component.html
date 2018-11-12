@@ -1,0 +1,39 @@
+<div class="body">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-6">
+				<div class="table-responsive">
+					<table class="table table-hover">
+					  <thead class="thead-dark">
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">Name</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr *ngFor="let heroe of heroes" (click)="seleccionar(heroe)" 
+					    [class.selected]="heroe === selectedHeroe">
+					      <td class="font-weight-bold">{{ heroe.id}}</td>
+					      <td>{{ heroe.name}}</td>
+					    </tr>
+					  </tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-6" *ngIf="selectedHeroe">
+				<!-- ngModel manda error si usas el FORMULARIO -->
+				  <div class="row">
+				    <div class="col">
+				      <input  class="form-control" placeholder="id" 
+				      [(ngModel)]="selectedHeroe.id">
+				    </div>
+				    <div class="col">
+				      <input  class="form-control" placeholder="Nombre" 
+				      [(ngModel)]="selectedHeroe.name">
+				    </div>
+				  </div>
+			</div>			
+		</div>
+	</div>
+</div>
