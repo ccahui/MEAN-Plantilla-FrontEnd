@@ -21,19 +21,10 @@
 					</table>
 				</div>
 			</div>
-			<div class="col-md-6" *ngIf="selectedHeroe">
-				<!-- ngModel manda error si usas el FORMULARIO -->
-				  <div class="row">
-				    <div class="col">
-				      <input  class="form-control" placeholder="id" 
-				      [(ngModel)]="selectedHeroe.id">
-				    </div>
-				    <div class="col">
-				      <input  class="form-control" placeholder="Nombre" 
-				      [(ngModel)]="selectedHeroe.name">
-				    </div>
-				  </div>
-			</div>			
+			<div class="col-md-6">
+				<app-heroe-detalle [heroe]="selectedHeroe"></app-heroe-detalle>
+			</div>
+						
 		</div>
 	</div>
 </div>
