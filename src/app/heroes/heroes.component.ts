@@ -9,20 +9,23 @@ import { HeroeService } from '../heroe.service';
 })
 export class HeroesComponent implements OnInit {
 
-	heroes:Heroe[]; 
-  	selectedHeroe:Heroe;
-  	constructor(private heroeService:HeroeService) { }
+  heroes: Heroe[];
+  selectedHeroe: Heroe;
+  constructor(private heroeService: HeroeService) { }
 
   ngOnInit() {
     this.getHeroes();
-  
+
   }
-  
-  getHeroes():void{
-    this.heroes = this.heroeService.getHeroes();
+  // ANSINCRONO
+  getHeroes(): void {
+    // this.heroes = this.heroeService.getHeroes(); Para OBSERVABLE ASINCRONO
+    this.heroeService.getHeroes() // Array devuelto HEROES
+      .subscribe(heroesDevuelto => this.heroes = heroesDevuelto);
+
   }
 
-  seleccionar(heroe: Heroe):void {
+  seleccionar(heroe: Heroe): void {
     this.selectedHeroe = heroe;
   }
 

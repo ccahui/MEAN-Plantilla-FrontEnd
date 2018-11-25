@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of} from 'rxjs'; //Datos del Servidor
 import { Heroe } from './heroe';
 import { HEROES } from './heroes';
 
@@ -8,8 +9,8 @@ import { HEROES } from './heroes';
 export class HeroeService {
 
   constructor() { }
-
-  getHeroes():Heroe[]{
-  	return HEROES;
+  //Datos del Servidor
+  getHeroes() : Observable <Heroe[]>{
+  	return of(HEROES);
   }
 }
