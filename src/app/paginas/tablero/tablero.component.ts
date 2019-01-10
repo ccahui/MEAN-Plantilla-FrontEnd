@@ -1,0 +1,41 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-tablero',
+  templateUrl: './tablero.component.html',
+  styles: []
+})
+export class TableroComponent implements OnInit {
+
+  graficos: any = {
+    'grafico1': {
+      'labels': ['Con Frijoles', 'Con Natilla', 'Con tocino'],
+      'data': [24, 30, 46],
+      'type': 'doughnut',
+      'leyenda': 'El pan se come con'
+    },
+    'grafico2': {
+      'labels': ['Hombres', 'Mujeres'],
+      'data': [4500, 6000],
+      'type': 'doughnut',
+      'leyenda': 'Entrevistados'
+    },
+    'grafico3': {
+      'labels': ['Si', 'No', 'No sabe/opina'],
+      'data': [40, 35, 25],
+      'type': 'doughnut',
+      'leyenda': '¿Le dan gases los frijoles?'
+    },
+    'grafico4': {
+      'labels': ['No', 'Si', 'No sabe/opina'],
+      'data': [75, 10, 15],
+      'type': 'doughnut',
+      'leyenda': '¿Le importa que le den gases?'
+    },
+  };
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

@@ -1,21 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // <-- NgModel 
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// Rutas
+import { APP_ROUTES } from './app-routing.module';
+
+// Modulos
+
+import { PaginasModule } from './paginas/paginas.module';
+
+
+// Componentes
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { HeroeDetalleComponent } from './heroe-detalle/heroe-detalle.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './login/register.component';
+import { RouterModule } from '@angular/router';
+import { ServiceModule } from './services/services.module';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent,
-    HeroeDetalleComponent
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule
+    APP_ROUTES,
+    PaginasModule,
+    FormsModule,
+    RouterModule,
+    ServiceModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
