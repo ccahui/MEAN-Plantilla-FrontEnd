@@ -22,7 +22,7 @@ export class UsuariosComponent implements OnInit {
 
   ngOnInit() {
     this.cargarUsuarios();
-    // Imagenes
+    // Imagenes Modal
     this.modalService.notificacion
       .subscribe(res => this.cargarUsuarios());
   }

@@ -7,10 +7,11 @@ import {
   SidebarService,
   UsuarioService,
   SubirArchivoService,
-  LoginGuard
+  LoginGuard,
+  AdminGuard,
+  VerificaTokenGuard
  } from './service.index';
 import { ModalService } from '../componets/modal-imagen/modal.service';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +23,9 @@ import { ModalService } from '../componets/modal-imagen/modal.service';
     UsuarioService,
     SubirArchivoService,
     ModalService,
-    LoginGuard
+    LoginGuard,
+    AdminGuard,
+    VerificaTokenGuard
   ],
   declarations: []
 })

@@ -37,12 +37,14 @@ export class UsuarioService {
     const URL = URL_SERVICE + '/login/renuevatoken?token=' + this.token;
     return this.http.get(URL).pipe(
       map((res: any) => {
-        console.log(res);
         this.token = res.token;
         localStorage.setItem('token', this.token);
         return true;
-      })
-    );
+      }), catchError(err => {
+        this.router.navigate(['/login']);
+        swal('Ups Ocurrio un Error', 'token', 'error');
+        return throwError(err);
+      }));
   }
   cargarStorage() {
     if (localStorage.getItem('token')) {
@@ -140,21 +142,21 @@ export class UsuarioService {
         swal('Usuario Actualizado', usuario.nombre, 'success');
         return true;
       }), catchError(err => {
-        swal(err.error.mensaje, err.error.errors.messaje, 'error');
+        swal(err.error.mensaje, err.error.errors.message, 'error');
         return throwError(err);
       }));
 
 
   }
   actualizarImagen(archivo: File, id: string) {
-    this.subirArchivoService.subirArchivo(archivo, 'usuarios', id)
+    this.subirArchivoService.subirArchivo(archivo, 'usuarios', id, this.token)
       .then((res: any) => {
         this.usuario.img = res.usuario.img;
         swal('Imagen Actualizada', this.usuario.nombre, 'success');
         this.guardarStorage(id, this.token, this.usuario, this.menu);
 
-      }).catch(res => {
-        console.log(res);
+      }).catch(err => {
+        swal(err.error.mensaje, err.error.errors.message, 'error');
       });
   }
   // Valor por defecto
@@ -179,7 +181,7 @@ export class UsuarioService {
       swal('Usuario Borrado', 'El usuario a sido eliminado Correctament', 'success');
       return true;
     }), catchError(err => {
-      swal(err.error.mensaje, err.error.errors.messaje, 'error');
+      swal(err.error.mensaje, err.error.errors.message, 'error');
       return throwError(err);
     }));
   }

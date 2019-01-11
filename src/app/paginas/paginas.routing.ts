@@ -7,8 +7,8 @@ import { ConfiguracionesComponent } from './configuraciones/configuraciones.comp
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
-import { LoginGuard } from '../services/service.index';
-
+import { LoginGuard, AdminGuard, VerificaTokenGuard } from '../services/service.index';
+// Verifica Token
 
 const pagesRoutes: Routes = [
     {
@@ -18,10 +18,25 @@ const pagesRoutes: Routes = [
         children: [
             { path: 'tablero', component: TableroComponent, data: { titulo: 'Tablero' } },
             { path: 'configuraciones', component: ConfiguracionesComponent, data: { titulo: 'Ajustes de Cuenta' } },
-            { path: 'perfil', component: PerfilComponent, data: { titulo: 'Mi Perfil' } },
+            {
+                path: 'perfil',
+                component: PerfilComponent,
+                canActivate: [VerificaTokenGuard],
+                data: { titulo: 'Mi Perfil' }
+            },
             { path: '', redirectTo: '/tablero', pathMatch: 'full' },
-            { path: 'heroes', component: HeroesComponent, data: { titulo: 'Heroes' } },
-            { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Usuarios' } },
+            {
+                path: 'heroes',
+                component: HeroesComponent,
+                canActivate: [VerificaTokenGuard],
+                data: { titulo: 'Heroes' }
+            },
+            {
+                path: 'usuarios',
+                component: UsuariosComponent,
+                canActivate: [AdminGuard, VerificaTokenGuard],
+                data: { titulo: 'Usuarios' }
+            },
             { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' } },
         ]
     }

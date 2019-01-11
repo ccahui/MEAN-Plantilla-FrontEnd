@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from './modal.service';
 import { SubirArchivoService } from 'src/app/services/subir-archivo/subir-archivo.service';
+import { UsuarioService } from 'src/app/services/service.index';
 
 @Component({
   selector: 'app-modal-imagen',
@@ -13,7 +14,7 @@ export class ModalImagenComponent implements OnInit {
   imagenTemp: any;
 
   constructor(public subirArchivoService: SubirArchivoService,
-    public modalService: ModalService) {
+    public modalService: ModalService, public usuarioService: UsuarioService) {
 
   }
 
@@ -48,16 +49,21 @@ export class ModalImagenComponent implements OnInit {
     this.modalService.ocultarModal();
   }
   subirImagen() {
+    // Input de File
+    const fileImg: any = document.getElementById('idFile');
 
-    this.subirArchivoService.subirArchivo(this.imagenSubir, this.modalService.tipo, this.modalService.id)
+    this.subirArchivoService.subirArchivo(this.imagenSubir, this.modalService.tipo, this.modalService.id, this.usuarioService.token)
       .then(res => {
+        // Vaciar imagen de Modal
+        fileImg.value = '';
         this.modalService.ocultarModal();
         // EVENTO que sera enviado a Usuario
         this.modalService.notificacion.emit(res);
-
       })
-      .catch(err => {
-        console.log('error');
+      .catch((error: any) => {
+        // Esta es una promesa d
+        swal(error.mensaje, error.errors.message, 'error');
+        fileImg.value = '';
       });
 
 
