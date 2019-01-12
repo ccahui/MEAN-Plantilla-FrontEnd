@@ -42,20 +42,19 @@ export class ModalImagenComponent implements OnInit {
       this.imagenTemp = reader.result;
     };
   }
-
+  
   cerrarModal() {
+ 
     this.imagenSubir = null;
     this.imagenTemp = null;
+    this.resetInputFile();
     this.modalService.ocultarModal();
   }
   subirImagen() {
-    // Input de File
-    const fileImg: any = document.getElementById('idFile');
 
     this.subirArchivoService.subirArchivo(this.imagenSubir, this.modalService.tipo, this.modalService.id, this.usuarioService.token)
       .then(res => {
         // Vaciar imagen de Modal
-        fileImg.value = '';
         this.modalService.ocultarModal();
         // EVENTO que sera enviado a Usuario
         this.modalService.notificacion.emit(res);
@@ -63,10 +62,12 @@ export class ModalImagenComponent implements OnInit {
       .catch((error: any) => {
         // Esta es una promesa d
         swal(error.mensaje, error.errors.message, 'error');
-        fileImg.value = '';
       });
-
-
     this.cerrarModal();
+  }
+  resetInputFile() {
+    // Input de File
+    const fileImg: any = document.getElementById('idFile');
+    fileImg.value = '';
   }
 }

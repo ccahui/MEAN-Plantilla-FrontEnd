@@ -12,7 +12,6 @@ declare var swal: any;
 export class UsuariosComponent implements OnInit {
   usuarios: Usuario[] = [];
   desde = 0;
-  hasta: number;
   cantidad = 5;
   totalUsuarios = 0;
   cargando: boolean;
@@ -36,11 +35,9 @@ export class UsuariosComponent implements OnInit {
 
         this.cargando = false;
         // MEJORAR
-        this.hasta = this.desde + this.cantidad;
-        if (this.hasta > this.totalUsuarios) {
-          this.hasta = this.totalUsuarios;
-        }
-      });
+      }, (err => {
+        this.cargando = false;
+      }));
   }
   siguiente() {
     const desde = this.desde + this.cantidad;
@@ -48,13 +45,7 @@ export class UsuariosComponent implements OnInit {
       return;
     }
     this.desde = desde;
-    this.hasta = desde + this.cantidad;
-    if (this.hasta > this.totalUsuarios) {
-      this.hasta = this.totalUsuarios;
-    }
-
     this.cargarUsuarios();
-
   }
   anterior() {
 
@@ -63,8 +54,6 @@ export class UsuariosComponent implements OnInit {
       return;
     }
     this.desde = desde;
-    this.hasta = desde + this.cantidad;
-
     this.cargarUsuarios();
 
   }
