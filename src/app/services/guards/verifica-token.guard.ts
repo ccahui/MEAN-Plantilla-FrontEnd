@@ -13,8 +13,6 @@ export class VerificaTokenGuard implements CanActivate {
 
   canActivate(): Promise<boolean> | boolean {
 
-    console.log('Token guard');
-
     const token = this._usuarioService.token;
     const payload = JSON.parse(atob(token.split('.')[1]));
 
@@ -27,7 +25,6 @@ export class VerificaTokenGuard implements CanActivate {
     }
     return this.verificaRenueva(payload.exp);
   }
-
 
   verificaRenueva(fechaExp: number): Promise<boolean> {
 
@@ -66,8 +63,6 @@ export class VerificaTokenGuard implements CanActivate {
     } else {
       return false;
     }
-
-
   }
 
 }

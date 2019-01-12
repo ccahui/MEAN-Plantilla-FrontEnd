@@ -42,9 +42,9 @@ export class ModalImagenComponent implements OnInit {
       this.imagenTemp = reader.result;
     };
   }
-  
+
   cerrarModal() {
- 
+
     this.imagenSubir = null;
     this.imagenTemp = null;
     this.resetInputFile();

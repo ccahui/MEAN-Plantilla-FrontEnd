@@ -58,10 +58,10 @@ export class LoginComponent implements OnInit {
     this.auth2.attachClickHandler(element, {}, (googleUser) => {
       // const profile = googleUser.getBasicProfile();
       const token = googleUser.getAuthResponse().id_token;
-      // console.log(token);
+
       this.usuarioService.loginGoogle(token)
         .subscribe(estado => {
-          console.log(estado);
+
           // Debido a errores de COMPATIBILidad lo idoneo era usar ROUTER navigate
           window.location.href = '#/tablero';
         });
