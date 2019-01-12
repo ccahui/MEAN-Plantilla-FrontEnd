@@ -21,11 +21,10 @@ export class VerificaTokenGuard implements CanActivate {
     const expirado = this.expirado(payload.exp);
 
     if (expirado) {
-      this.router.navigate(['/login']);
+      swal('Ups Ocurrio un Error', 'Sesión Expirada, Inicie Sesión Nuevamente', 'error');
+      this._usuarioService.logout();
       return false;
     }
-
-
     return this.verificaRenueva(payload.exp);
   }
 
@@ -45,7 +44,6 @@ export class VerificaTokenGuard implements CanActivate {
 
         this._usuarioService.renovarToken()
           .subscribe(() => {
-            console.log('BIEN');
             resolve(true);
           }, () => {
             this.router.navigate(['/login']);
