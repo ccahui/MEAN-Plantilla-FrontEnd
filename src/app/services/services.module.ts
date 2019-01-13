@@ -9,9 +9,11 @@ import {
   SubirArchivoService,
   LoginGuard,
   AdminGuard,
-  VerificaTokenGuard
+  VerificaTokenGuard,
+  HeroeService
  } from './service.index';
 import { ModalService } from '../componets/modal-imagen/modal.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { ModalService } from '../componets/modal-imagen/modal.service';
     AjustesService,
     SidebarService,
     UsuarioService,
+    HeroeService,
     SubirArchivoService,
     ModalService,
     LoginGuard,

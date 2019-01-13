@@ -20,6 +20,7 @@ import { CommonModule } from '@angular/common';
 import { PipesModule } from '../pipes/pipes.module';
 import { ModalImagenComponent } from '../componets/modal-imagen/modal-imagen.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
+import { HeroeComponent } from './heroes/heroe.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
         PerfilComponent,
         UsuariosComponent,
         ModalImagenComponent,
-        BusquedaComponent
+        BusquedaComponent,
+        HeroeComponent
     ],
     exports: [
     ],

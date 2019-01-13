@@ -8,6 +8,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { LoginGuard, AdminGuard, VerificaTokenGuard } from '../services/service.index';
+import { HeroeComponent } from './heroes/heroe.component';
 // Verifica Token
 
 const pagesRoutes: Routes = [
@@ -29,7 +30,13 @@ const pagesRoutes: Routes = [
                 path: 'heroes',
                 component: HeroesComponent,
                 canActivate: [VerificaTokenGuard],
-                data: { titulo: 'Heroes' }
+                data: { titulo: 'Héroes' }
+            },
+            {
+                path: 'heroe/:id',
+                component: HeroeComponent,
+                canActivate: [VerificaTokenGuard],
+                data: { titulo: 'Actualizar  Héroe' }
             },
             {
                 path: 'usuarios',

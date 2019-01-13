@@ -20,9 +20,13 @@ export class ImagenPipe implements PipeTransform {
       case 'usuario':
         URL = URL + '/usuarios/' + img;
         break;
+      case 'heroe':
+        URL = URL + '/heroes/' + img;
+        break;
+
       default:
         console.log('Tipo de Imagen no Existe PIPE, usuario medico hospital');
-        URL = '/usuarios/abcde';
+        URL = URL + '/usuarios/abcde';
 
     }
     return URL;

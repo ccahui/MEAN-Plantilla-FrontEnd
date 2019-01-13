@@ -61,7 +61,7 @@ export class ModalImagenComponent implements OnInit {
       })
       .catch((error: any) => {
         // Esta es una promesa d
-        swal(error.mensaje, error.errors.message, 'error');
+        swal(error.mensaje, error.mensaje, 'error');
       });
     this.cerrarModal();
   }
