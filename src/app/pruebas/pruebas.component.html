@@ -1,0 +1,10 @@
+<div class="container">
+  
+  <h1>Pruebas Varias PRUEBA MODULE</h1>
+
+  <a class =" ml-2" routerLinkActive="pruebaActiveClass"
+  *ngFor="let item of menu" [routerLink]="[item.link]">{{ item.nombre}}</a>
+  <br>
+  <br>
+  <router-outlet></router-outlet>
+</div>

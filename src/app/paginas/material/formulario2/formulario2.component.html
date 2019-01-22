@@ -1,0 +1,54 @@
+<div class="row animated fadeIn">
+  <div class="col-md-6">
+    <mat-card class="py-4">
+      <mat-card-title class="pd-x-15">Perfil de Usuario</mat-card-title>
+      <mat-card-subtitle class="pd-x-15">nombre de Usuario</mat-card-subtitle>
+      <mat-card-content class="pd-x-20">
+        <!-- Formulario-->
+        <form [formGroup]="forma" (ngSubmit)="onSubmit()">
+
+          <div class="example-container">
+            <mat-form-field>
+              <input formControlName="nombre" matInput autocomplete="off" placeholder="Nombre">
+              <mat-error>Este campo es obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input formControlName="email" matInput placeholder="Email" type="email">
+              <mat-error>{{emailErrorMensaje()}}</mat-error>
+            </mat-form-field>
+
+
+            <div class="button-row">
+              <button type="submit" mat-raised-button color="primary">Guardar</button>
+            </div>
+
+          </div>
+        </form>
+
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+  <div class="col-md-5">
+    <mat-card class="py-4 text-center">
+      <mat-card-title>Foto de Perfil</mat-card-title>
+      <mat-card-subtitle>nombre de Usuario</mat-card-subtitle>
+      <mat-card-content class="pd-x-20">
+        <div class="d-block">
+          <img mat-card-img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="img-fluid">
+          <img mat-card-img *ngIf="imagenTemp" [src]="imagenTemp" class="img-fluid">
+        </div>
+        <div class="d-inline-block">
+          <input class="btn-sm form-control-file" (change)="seleccionImage($event.target.files[0])" type="file">
+        </div>
+        <br>
+        <button type="button" (click)="cambiarImagen()" [disabled]="!imagenSubir" style="width: 100%" mat-raised-button
+          color="primary">
+          Actualizar Foto
+        </button>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

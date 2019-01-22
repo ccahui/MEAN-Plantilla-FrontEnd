@@ -1,0 +1,78 @@
+<div class="row animated fadeIn">
+  <div class="col-md-6">
+    <mat-card class="py-4">
+      <mat-card-title class="pd-x-15">Perfil de Usuario</mat-card-title>
+      <mat-card-subtitle class="pd-x-15">nombre de Usuario</mat-card-subtitle>
+      <mat-card-content class="pd-x-20">
+        <!-- Formulario-->
+        <form [formGroup]="forma" (ngSubmit)="onSubmit()">
+
+          <div class="example-container">
+            <mat-form-field>
+              <input formControlName="nombre" matInput autocomplete="off" placeholder="Nombre">
+              <mat-error>Este campo es obligatorio</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input formControlName="apellido" matInput autocomplete="off" placeholder="Apellido">
+              <mat-error>Este campo es obligatorio</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input formControlName="email" matInput autocomplete="off" placeholder="Email" type="email">
+              <mat-error>{{emailErrorMensaje()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input formControlName="password" matInput #input placeholder="Contraseña" [type]="hide ? 'password' : 'text'">
+              <mat-icon  class="pointer" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error> {{ passwordErrorMensaje()}}</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field>
+              <input formControlName="password1" matInput placeholder="Repetir Contraseña" type="password">
+              <mat-error>Las contraseñas no son Iguales</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select placeholder="Lenguajes de Programación">
+                <mat-option>--Ninguno</mat-option>
+                <mat-option *ngFor="let lenguaje of lenguajes" [value]="lenguaje">{{lenguaje}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <div>
+              <mat-checkbox color="primary" formControlName="terminos">Acepto los terminos y condiciones</mat-checkbox>
+            </div>
+            <div class="button-row">
+              <button type="submit" mat-raised-button color="primary">Guardar</button>
+              <button type="reset" mat-raised-button color="warn">Reset</button>
+            </div>
+
+          </div>
+        </form>
+
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+  <div class="col-md-5">
+    <mat-card class="py-4 text-center">
+      <mat-card-title>Foto de Perfil</mat-card-title>
+      <mat-card-subtitle>nombre de Usuario</mat-card-subtitle>
+      <mat-card-content class="pd-x-20">
+
+        <img mat-card-img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="img-fluid">
+        <img mat-card-img *ngIf="imagenTemp" [src]="imagenTemp" class="img-fluid">
+
+        <input class="btn-sm" (change)="seleccionImage($event.target.files[0])" type="file">
+        <br><br>
+        <button type="button" (click)="cambiarImagen()" [disabled]="!imagenSubir" style="width: 100%" mat-raised-button color="primary">
+           Actualizar Foto
+          </button>
+        
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

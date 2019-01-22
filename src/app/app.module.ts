@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 import { RouterModule } from '@angular/router';
 import { ServiceModule } from './services/services.module';
+import { PruebasModule } from './pruebas/pruebas.module';
 
 
 
@@ -33,7 +34,8 @@ import { ServiceModule } from './services/services.module';
     FormsModule,
     RouterModule,
     ServiceModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PruebasModule
 
   ],
   providers: [],

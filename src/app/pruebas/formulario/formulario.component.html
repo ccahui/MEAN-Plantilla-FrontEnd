@@ -1,0 +1,55 @@
+<div class="row animated fadeIn">
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Perfil del usuario</h4>
+        <h6 class="card-subtitle"> nombre usuario </h6>
+
+        <form class="form p-t-20" [formGroup]="usuarioForma" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Nombre de usuario</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+              <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre de usuario" required>
+            </div>
+          </div>
+          <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+
+            <div *ngIf="nombre.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="nombre.errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label>Correo de usuario</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-email"></i></div>
+              <input formControlName="email" type="email" class="form-control" placeholder="Correo del usuario"
+                required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input formControlName="password" type="password" class="form-control" placeholder="password" required>
+            <input formControlName="password1" style="margin-top: 10px" type="password" class="form-control"
+              placeholder="confirmar password" required>
+          </div>
+          <div class="form-group ">
+            <div class="checkbox checkbox-primary p-t-0">
+              <input formControlName="condiciones" id="checkbox-signup" type="checkbox">
+              <label for="checkbox-signup"> Estoy de acuerdo con los <a href="#">términos</a></label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+            <i class="fa fa-save"></i>
+            Guardar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

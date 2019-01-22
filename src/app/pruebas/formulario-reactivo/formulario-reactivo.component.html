@@ -1,0 +1,66 @@
+<!-- NAVBAR -->
+<mat-toolbar>
+
+  <span class="example-fill-remaining-space"></span>
+  <span>Formulario Reactivo MATERIAL</span>
+
+  <span class="example-fill-remaining-space"></span>
+</mat-toolbar>
+
+<!--NAVBAR-->
+<br>
+<!-- Formulario-->
+<form [formGroup]="forma" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="example-container">
+        <mat-form-field>
+          <input formControlName="nombre" matInput autocomplete="off" placeholder="Nombre">
+          <mat-error>Este campo es obligatorio</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input formControlName="apellido" matInput autocomplete="off" placeholder="Apellido">
+          <mat-error>Este campo es obligatorio</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input formControlName="email" matInput autocomplete="off" placeholder="Email" type="email">
+          <mat-error>{{emailErrorMensaje()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input formControlName="password" matInput #input placeholder="Contraseña" type="password">
+          <mat-error> {{ passwordErrorMensaje()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input formControlName="password1" matInput placeholder="Repetir Contraseña" type="password">
+          <mat-error>Las contraseñas no son Iguales</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Lenguajes de Programación">
+            <mat-option>--Ninguno</mat-option>
+            <mat-option *ngFor="let lenguaje of lenguajes" [value]="lenguaje">{{lenguaje}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div>
+          <mat-checkbox color="primary" formControlName="terminos">Acepto los terminos y condiciones</mat-checkbox>
+        </div>
+        <div class="button-row">
+          <button type="submit" mat-raised-button color="primary" [disabled]="forma.invalid">Guardar</button>
+          <button type="reset" mat-raised-button color="warn">Reset</button>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="col-md-6">
+      Hola
+    </div>
+
+  </div>
+
+</form>

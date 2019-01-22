@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PaginaComponent } from './pagina.component';
 import { TableroComponent } from './tablero/tablero.component';
@@ -21,7 +21,11 @@ import { PipesModule } from '../pipes/pipes.module';
 import { ModalImagenComponent } from '../componets/modal-imagen/modal-imagen.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { HeroeComponent } from './heroes/heroe.component';
-
+import { Formulario1Component } from './material/formulario1/formulario1.component';
+import { Formulario2Component } from './material/formulario2/formulario2.component';
+import { HeroesMComponent } from './material/heroes-m/heroes-m.component';
+import { UsuariosMComponent } from './material/usuarios-m/usuarios-m.component';
+import { MiMaterialModule } from '../pruebas/mimaterial.module';
 @NgModule({
     declarations: [
         PaginaComponent,
@@ -33,7 +37,11 @@ import { HeroeComponent } from './heroes/heroe.component';
         UsuariosComponent,
         ModalImagenComponent,
         BusquedaComponent,
-        HeroeComponent
+        HeroeComponent,
+        Formulario1Component,
+        Formulario2Component,
+        HeroesMComponent,
+        UsuariosMComponent,
     ],
     exports: [
     ],
@@ -45,6 +53,8 @@ import { HeroeComponent } from './heroes/heroe.component';
         ChartsModule,
         CommonModule,
         PipesModule,
+        ReactiveFormsModule,
+        MiMaterialModule,
     ]
 })
 export class PaginasModule { }

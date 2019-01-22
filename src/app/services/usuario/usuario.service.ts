@@ -136,8 +136,7 @@ export class UsuarioService {
         // this.guardarStorage(res.id, res.token, res.usuario);
         // Funcion Utilizada para PERFIL y MODIFICAR ROLE
         if (usuario._id === this.usuario._id) {
-          const usuarioDB = res.usuario;
-          this.guardarStorage(usuarioDB._id, this.token, usuarioDB, this.menu); // Token ?
+          this.guardarStorage(this.usuario._id, this.token, this.usuario, this.menu); // Token ?
         }
         swal('Usuario Actualizado', usuario.nombre, 'success');
         return true;

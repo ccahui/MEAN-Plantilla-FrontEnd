@@ -33,7 +33,7 @@ export class PerfilComponent implements OnInit {
                 .subscribe();
 
   }
-
+  // Vista previa de la Imagen
   seleccionImage( archivo: File ) {
 
     if ( !archivo ) {
@@ -55,7 +55,7 @@ export class PerfilComponent implements OnInit {
     reader.onloadend = () => this.imagenTemp = reader.result;
 
   }
-
+  // Sube la imagen al servidor
   cambiarImagen() {
 
     this._usuarioService.actualizarImagen( this.imagenSubir, this.usuario._id );
