@@ -1,0 +1,48 @@
+<div class="row animated fadeIn">
+  <div class="col-md-6 ">
+    <mat-card class="py-4">
+      <mat-card-title class="pd-x-15">Héroe:</mat-card-title>
+      <mat-card-subtitle class="pd-x-15">nombre de Heroe</mat-card-subtitle>
+      <mat-card-content class="pd-x-20">
+        <!-- Formulario-->
+        <form [formGroup]="forma" (ngSubmit)="onSubmit()">
+
+          <div class="example-container">
+            <mat-form-field>
+              <input formControlName="nombre" matInput autocomplete="off" placeholder="Nombre">
+              <mat-error>Este campo es obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input formControlName="superPoder" matInput autocomplete="off" placeholder="Super Poder">
+              <mat-error>Este campo es obligatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <textarea formControlName="descripcion" matInput autocomplete="off" placeholder="Descripción" rows="3">
+                </textarea>
+              <mat-error>Este campo es obligatorio</mat-error>
+            </mat-form-field>
+
+
+
+
+            <div class="button-row">
+              <button type="submit" mat-raised-button color="primary">Guardar</button>
+              <a routerLink="/materialHeroes" mat-raised-button color="warn">Cancelar</a>
+            </div>
+          </div>
+        </form>
+
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+  <div *ngIf="forma.controls['_id'].value" class="col-md-4">
+    <mat-card class="py-4 text-center">
+      <mat-card-title>Fotografia</mat-card-title>
+      <mat-card-content class="pd-x-20">
+          <img (click)="actualizarImagen()" [src]="forma.controls['img'].value | imagen:'heroe'" class="img-rounded img-fluid pointer">
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

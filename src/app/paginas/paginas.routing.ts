@@ -13,6 +13,7 @@ import { UsuariosMComponent } from './material/usuarios-m/usuarios-m.component';
 import { HeroesMComponent } from './material/heroes-m/heroes-m.component';
 import { Formulario1Component } from './material/formulario1/formulario1.component';
 import { Formulario2Component } from './material/formulario2/formulario2.component';
+import { HeroeMComponent } from './material/heroes-m/heroe-m.component';
 // Verifica Token
 
 const pagesRoutes: Routes = [
@@ -61,6 +62,12 @@ const pagesRoutes: Routes = [
                 component: HeroesMComponent,
                 canActivate: [AdminGuard, VerificaTokenGuard],
                 data: { titulo: 'Heroes Material' }
+            },
+            {
+                path: 'materialHeroe/:id',
+                component: HeroeMComponent,
+                canActivate: [VerificaTokenGuard],
+                data: { titulo: 'Actualizar  Héroe Material' }
             },
             { path: 'formulario1', component: Formulario1Component, data: { titulo: 'Formulario1 Material' } },
             {

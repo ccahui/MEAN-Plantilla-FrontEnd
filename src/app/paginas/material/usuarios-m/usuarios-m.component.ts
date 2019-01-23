@@ -68,7 +68,7 @@ export class UsuariosMComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
+  // Buscador
   mostrarModal(id: string) {
     this.modalService.mostrarModal('usuarios', id);
   }

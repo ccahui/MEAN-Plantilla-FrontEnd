@@ -26,6 +26,7 @@ import { Formulario2Component } from './material/formulario2/formulario2.compone
 import { HeroesMComponent } from './material/heroes-m/heroes-m.component';
 import { UsuariosMComponent } from './material/usuarios-m/usuarios-m.component';
 import { MiMaterialModule } from '../pruebas/mimaterial.module';
+import { HeroeMComponent } from './material/heroes-m/heroe-m.component';
 @NgModule({
     declarations: [
         PaginaComponent,
@@ -42,6 +43,7 @@ import { MiMaterialModule } from '../pruebas/mimaterial.module';
         Formulario2Component,
         HeroesMComponent,
         UsuariosMComponent,
+        HeroeMComponent,
     ],
     exports: [
     ],
