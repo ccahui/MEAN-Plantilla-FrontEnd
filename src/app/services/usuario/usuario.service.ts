@@ -158,9 +158,14 @@ export class UsuarioService {
         swal(err.error.mensaje, err.error.errors.message, 'error');
       });
   }
-  // Valor por defecto
+  // Valor por defecto CON PAGINACION
   obtenerUsuarios(desde: number = 0) {
     const URL = URL_SERVICE + '/usuario?desde=' + desde;
+    return this.http.get(URL);
+  }
+  // Todos los usuarios
+  obtenerUsuariosSinPaginacion() {
+    const URL = URL_SERVICE + '/usuario/todo';
     return this.http.get(URL);
   }
 

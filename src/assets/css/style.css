@@ -1725,7 +1725,14 @@ Other comon js for all pages
   overflow-x: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar; 
 }
-
+@media(max-width: 800px) {
+  .responsive_table {
+      overflow-x: auto !important;
+  }
+  .mat-table {
+      min-width:800px;
+  }
+}
 .single-column .left-sidebar {
   display: none; }
 

@@ -1,69 +1,84 @@
 <div class="row animated fadeIn">
-  <div class="col-md-12 table_responsive" >
+  <div class="col-md-12 table_responsive">
+    <mat-card class="w-100 pt-2 pb-0 mb-3">
+      <mat-form-field class="w-100 px-1 mx-0">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar Usuario">
+      </mat-form-field>
+    </mat-card>
+    
+    <div class="mat-elevation-z8 mb-4">
+      <table mat-table [dataSource]="dataSource" class="w-100 table-hover ">
 
-    <table mat-table [dataSource]="usuarios" class="mat-elevation-z8 w-100 table-hover my-5">
-
-      <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- Position Column -->
-      <ng-container matColumnDef="img">
-        <th mat-header-cell *matHeaderCellDef> <b>Foto</b> </th>
-        <td mat-cell *matCellDef="let element" class="py-2 w70 px-4"  >
-          <img (click)="mostrarModal( element._id )" [src]="element.img | imagen" class="img-50 img-circle pointer">
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> <b>Email</b> </th>
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef> <b>Nombre</b></th>
-        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-      </ng-container>
-
-      <!-- Weight Column -->
-      <ng-container matColumnDef="role">
-        <th mat-header-cell *matHeaderCellDef> <b>Role</b> </th>
-        <td mat-cell *matCellDef="let element">
-          <mat-form-field>
-            <mat-select [(ngModel)]="element.role">
-              <mat-option value="ADMIN_ROLE">ADMIN_ROLE</mat-option>
-              <mat-option value="USER_ROLE">USER_ROLE</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="google">
-        <th mat-header-cell *matHeaderCellDef> <b>Auth</b></th>
-        <td mat-cell *matCellDef="let element">
-          <label *ngIf="element.google" class="label label-danger">Google</label>
-          <label *ngIf="!element.google" class="label label-info">Normal</label>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="operacion">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element" >
-              <button (click)="guardarUsuario( element )" class="btn btn-primary">
-                  <i class="fa fa-save"></i>
-                </button>
-
-                <button (click)="borrarUsuario( element )" class="btn btn-danger">
-                  <i class="fa fa-trash-o"></i>
-                </button>
+        <!-- FOTO Column -->
+        <ng-container matColumnDef="img">
+          <th mat-header-cell *matHeaderCellDef> <b>Foto</b> </th>
+          <td mat-cell *matCellDef="let element" class="py-2 w70 px-4">
+            <img (click)="mostrarModal( element._id )" [src]="element.img | imagen" class="img-50 img-circle pointer">
           </td>
         </ng-container>
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="opciones">
-        <th mat-header-cell *matHeaderCellDef> Symbol </th>
-        <td mat-cell *matCellDef="let element"> Hola </td>
-      </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> <b>Email</b> </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+        <!-- NOMBRE Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> <b>Nombre</b></th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+
+        <!-- ROLE Column -->
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef> <b>Role</b> </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-form-field>
+              <mat-select [(ngModel)]="element.role">
+                <mat-option value="ADMIN_ROLE">ADMIN_ROLE</mat-option>
+                <mat-option value="USER_ROLE">USER_ROLE</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </ng-container>
+        <!-- AUTH Colum -->
+        <ng-container matColumnDef="google">
+          <th mat-header-cell *matHeaderCellDef> <b>Auth</b></th>
+          <td mat-cell *matCellDef="let element">
+            <label *ngIf="element.google" class="label label-danger">Google</label>
+            <label *ngIf="!element.google" class="label label-info">Normal</label>
+          </td>
+        </ng-container>
+
+        <!-- OPERACION Colum-->
+        <ng-container matColumnDef="operacion">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button (click)="guardarUsuario( element )" class="btn btn-primary">
+              <i class="fa fa-save"></i>
+            </button>
+
+            <button (click)="borrarUsuario( element )" class="btn btn-danger">
+              <i class="fa fa-trash-o"></i>
+            </button>
+          </td>
+        </ng-container>
+        <!-- Footer de la Table LOADING-->
+        <ng-container matColumnDef="cargando">
+          <th mat-footer-cell *matFooterCellDef colspan="5" class="text-center">
+            <mat-spinner class="d-inline-block my-20"></mat-spinner>
+          </th>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <!-- Footer de la table-->
+        <tr mat-row *matFooterRowDef="['cargando']" [hidden]="!cargando"></tr>
+      </table>
+      <div [hidden]="cargando">
+          <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]"></mat-paginator>
+      </div>
+      
+    </div>
+
   </div>
 
 </div>
